@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "9fZ8K131FFA=",
+  "success": true,
+  "projectFilePath": "d:\\OneDrive\\Escritorio\\proyecto isp plc\\app_isp\\AppIsp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hehum\\AppData\\Local\\Temp\\cursor-sandbox-cache\\c75343f744334e45510bc3c62bb8edf2\\nuget\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\hehum\\AppData\\Local\\Temp\\cursor-sandbox-cache\\c75343f744334e45510bc3c62bb8edf2\\nuget\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\hehum\\AppData\\Local\\Temp\\cursor-sandbox-cache\\c75343f744334e45510bc3c62bb8edf2\\nuget\\mysqlconnector\\2.4.0\\mysqlconnector.2.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}

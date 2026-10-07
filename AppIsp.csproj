@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Proyecto Windows Forms en .NET 8.
+    El punto de entrada es Program.cs, en la raíz de app_isp.
+    Las carpetas modelo, controlador y vista están al lado de ese archivo.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <!-- Este equipo tiene el escritorio de .NET 10. RollForward permite ejecutar el proyecto .NET 8 ahí. -->
+    <RollForward>Major</RollForward>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>AppIsp</RootNamespace>
+    <AssemblyName>AppIsp</AssemblyName>
+    <StartupObject>AppIsp.Program</StartupObject>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ApplicationDefaultFont>Segoe UI, 10pt</ApplicationDefaultFont>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="2.4.0" />
+  </ItemGroup>
+
+  <!-- La configuración viaja junto al .exe para que el programa la encuentre al ejecutarse. -->
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!--
+    WinFormsApp1 es la plantilla vacía que ya estaba en la carpeta.
+    No forma parte de esta aplicación, así que no se compila con ella.
+  -->
+  <ItemGroup>
+    <Compile Remove="WinFormsApp1\**" />
+    <EmbeddedResource Remove="WinFormsApp1\**" />
+    <None Remove="WinFormsApp1\**" />
+    <Content Remove="WinFormsApp1\**" />
+  </ItemGroup>
+
+</Project>

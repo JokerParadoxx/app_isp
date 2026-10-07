@@ -1,0 +1,174 @@
+MANUAL DE USUARIO
+ISP PLC
+
+Este programa es el escritorio para operar el ISP: clientes, visitas,
+routers y la configuración de cada equipo. Se abre con el archivo
+del proyecto y, tras iniciar sesión, muestra solo el menú que
+corresponde a su rol.
+
+
+1. Entrar y salir
+
+En la pantalla de ingreso escriba el correo y la contraseña de su
+usuario y pulse Ingresar. "Probar conexión" solo comprueba que MySQL
+responde; no entra a la aplicación.
+
+Para terminar, use "Cerrar sesión" en la parte inferior del menú.
+Eso vuelve a pedir la clave. "Salir", en el ingreso, cierra el programa.
+
+Hay tres roles:
+
+- Comercial: clientes, servicios, instalaciones y tickets comerciales.
+- Técnico: instalaciones (solo el resultado de la visita), tickets
+  técnicos, routers, configuración remota y estado de la conexión.
+- Maestro: todo lo anterior, más facturas, planes, usuarios y auditoría.
+
+
+2. Inicio
+
+Al entrar verá contadores (clientes, tickets, instalaciones u otros,
+según el rol) y los últimos tickets.
+
+Si entra como técnico o como maestro, en el inicio hay dos botones:
+"Configuración remota" y "Estado de la conexión". El comercial no
+los ve.
+
+
+3. Clientes, servicios y planes
+
+Clientes: busque por nombre, identificación o correo. Nuevo abre una
+ventana con la ficha vacía. Modificar, o un doble clic en la fila,
+abre la misma ventana con los datos de ese abonado. Solo el maestro
+puede eliminar; el resto usa el estado Baja cuando corresponde.
+
+Servicios: asocia un cliente con un plan. El comercial puede dar de
+alta, cambiar el plan o dar de baja. El técnico solo consulta.
+
+Planes: solo el maestro. Ahí se define el nombre, la velocidad y el
+precio mensual.
+
+
+4. Agendar una visita
+
+Entre a Instalaciones y pulse Nueva. Se abre una ventana aparte; la
+lista queda detrás.
+
+1. Elija el servicio y, si ya lo sabe, el técnico.
+2. En el calendario marque el día de la visita. El día elegido se
+   escribe encima del calendario.
+3. Indique la hora.
+4. Deje el estado en Pendiente y pulse Guardar.
+
+Para cambiar una visita, selecciónela y pulse Modificar, o haga doble
+clic. Se abre la misma ventana con sus datos.
+
+No se pueden elegir días anteriores a hoy: en el calendario quedan
+bloqueados. Si intenta guardar una fecha pasada, el programa no la
+acepta. Una visita antigua se puede abrir para verla, pero no se
+puede mover a otro día ya pasado.
+
+El técnico no cambia el día ni el servicio. Solo actualiza el estado,
+la fecha real y el comentario cuando la visita ya se hizo.
+
+
+5. Agenda de disponibilidad
+
+La agenda indica en qué hora está libre cada persona. Los bloques van
+de 09:00 a 20:00 y cada uno dura una hora: 09:00-10:00, 10:00-11:00
+y así hasta 19:00-20:00. Comercial y técnico solo consultan la lista.
+
+El maestro pulsa Nuevo. Se abre una ventana con el calendario: elige
+el usuario, marca el día (tampoco aquí se aceptan días anteriores a
+hoy), elige la hora y pulsa Guardar. Modificar, o un doble clic, abre
+esa ventana con el bloque ya cargado. La casilla Disponible se deja
+marcada si esa persona puede salir a terreno en ese rango.
+
+
+6. Tickets
+
+Un ticket es un caso de soporte o una solicitud. El comercial ve y
+crea los comerciales. El técnico ve y crea los técnicos. El maestro
+ve ambos.
+
+Escriba el cliente, el tipo, la categoría, la prioridad y la
+descripción. Al resolverlo, cambie el estado. La lista del inicio
+muestra los más recientes de su rol.
+
+
+7. Routers
+
+El técnico y el maestro ven el inventario de equipos: serie, modelo,
+MAC, IP de gestión, estado y servicio. La IP de gestión es la que
+después se usa para medir la conexión. Solo el maestro crea o elimina
+routers; el técnico puede actualizar los datos.
+
+
+8. Configuración remota
+
+Solo técnico y maestro. Elija el router en la lista superior y use
+las pestañas:
+
+- Wi-Fi: nombre, contraseña y cifrado de la red 2.4 GHz y de la red
+  5 GHz. Si el cifrado no es "Abierta", la contraseña debe tener
+  entre 8 y 63 caracteres. Puede mostrar las contraseñas con la
+  casilla correspondiente.
+- Puertos: nombre de la regla, protocolo (TCP, UDP o ambos), puerto
+  externo, puerto interno e IP de destino.
+- DMZ y seguridad: IP de la DMZ, firewall, inspección SPI, bloqueo
+  de ping desde internet, UPnP, acceso remoto y puerto de
+  administración. Aquí también se elige el modo del filtrado MAC:
+  desactivado, permitir solo las MAC de la lista, o bloquearlas.
+- Filtrado MAC: altas y bajas de direcciones, con el formato
+  AA:BB:CC:DD:EE:FF.
+- Dispositivos: equipos conectados, con nombre, MAC, IP, banda
+  (2.4, 5 o LAN) y si están conectados ahora.
+- IPs reservadas: una IP fija para una MAC.
+- IP y DNS: modo DHCP o estática en IPv4 (dirección, máscara, puerta
+  de enlace y rango DHCP), IPv6 y los DNS de las dos familias.
+
+Cada pestaña tiene su botón Guardar. Si falta un dato obligatorio,
+el programa indica cuál es y no graba.
+
+
+9. Estado de la conexión
+
+Solo técnico y maestro. Elija el router y pulse "Medir ahora".
+
+El programa envía cuatro pruebas a la IP de gestión y muestra:
+
+- si respondió (en línea, degradada o sin respuesta);
+- la latencia en milisegundos;
+- el porcentaje de pérdida;
+- cuántas mediciones hay guardadas;
+- cuántos dispositivos figuran conectados;
+- el historial, con fecha y detalle.
+
+Si el router no tiene IP de gestión, cárguela antes en Routers.
+
+
+10. Aprovisionamiento, facturas y usuarios
+
+Aprovisionamiento (técnico y maestro): la lista identifica cada equipo
+por su MAC y muestra el id del cliente, el nombre y el plan. Pulse
+Aprovisionar o haga doble clic. La ventana trae la MAC, los datos del
+router, el cliente asociado y el perfil del plan (nombre, descripción,
+velocidad y precio). Desde ahí puede reiniciar, cambiar la IP de
+gestión o registrar una configuración.
+
+Facturación y el detalle de cada factura: solo el maestro.
+
+Usuarios y roles: solo el maestro. Nuevo y Modificar abren una
+ventana. Hay que indicar el id, el nombre, el correo, la contraseña
+(si la deja vacía al editar, no cambia) y el rol. La descripción del
+rol también se puede ajustar desde esa ventana.
+
+Auditoría: solo el maestro. Muestra los cambios comerciales y las
+acciones hechas sobre los routers.
+
+
+11. Si algo no responde
+
+Use "Probar conexión" en el ingreso. Si falla, revise que MySQL esté
+encendido y que appsettings.json tenga el host, el puerto, la base,
+el usuario y la contraseña correctos. La base se llama isp_db y se
+crea con el script "ddl base de datos.txt".
